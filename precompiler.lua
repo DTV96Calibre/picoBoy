@@ -6,7 +6,8 @@ function replaceSynonyms(picoString)
 end
 
 function expandAssignmentShortcuts(picoString)
-  -- Less naive replacement of strings, but the same problem as in replaceSynonyms
+  -- Less naive replacement of strings, but will still replace matches in literal strings
+  -- [_%a][_%w]* matches lua identifiers
   result = string.gsub(picoString, "([_%a][_%w]*)%s*([%+%-%*%/%%])=%s*", "%1 = %1 %2 ")
   return result
 end
